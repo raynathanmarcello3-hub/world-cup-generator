@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>World Cup</title>
+  <style>
+    body {
+      background: green;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+    }
+
+    button {
+      background: gold;
+      color: black;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1> World Cup Simulator</h1>
+
+  <button onclick="mulai()">Mulai!</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    var tim = [
+      "Brazil", "Argentina", "France", "England",
+      "Germany", "Spain", "Portugal", "Netherlands"
+    ];
+
+    function menang(tim1, tim2) {
+      if (Math.random() < 0.5) {
+        return tim1;
+      } else {
+        return tim2;
+      }
+    }
+
+    function mulai() {
+      var pemenang1 = menang(tim[0], tim[1]);
+      var pemenang2 = menang(tim[2], tim[3]);
+      var pemenang3 = menang(tim[4], tim[5]);
+      var pemenang4 = menang(tim[6], tim[7]);
+
+      
+      var finalis1 = menang(pemenang1, pemenang2);
+      var finalis2 = menang(pemenang3, pemenang4);
+
+      
+      var juara = menang(finalis1, finalis2);
+
+      
+      document.getElementById("hasil").innerHTML =
+        "<h2>Semi Final</h2>" +
+        "<p>" + tim[0] + " vs " + tim[1] + " → " + pemenang1 + "</p>" +
+        "<p>" + tim[2] + " vs " + tim[3] + " → " + pemenang2 + "</p>" +
+        "<p>" + tim[4] + " vs " + tim[5] + " → " + pemenang3 + "</p>" +
+        "<p>" + tim[6] + " vs " + tim[7] + " → " + pemenang4 + "</p>" +
+
+        "<h2>Final</h2>" +
+        "<p>" + finalis1 + " vs " + finalis2 + "</p>" +
+
+        "<h1>🏆 Juara: " + juara + "!</h1>";
+    }
+  </script>
+
+</body>
+</html>
